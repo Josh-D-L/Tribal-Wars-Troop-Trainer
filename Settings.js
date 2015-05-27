@@ -180,7 +180,7 @@ function Setup() {
 }
 alert("Before you can start, you will need to know the research status of all of your villages, what their ID is in the URL of any page where you are in that village, and your desired troop counts");
 var code = ["javascript: var tellTrainTime = ", ";var tellPercentDone = ", ";var tellInsufficientRes =", "var vilConfig;var resPercentage;var research;"];
-var start = confirm("This is the setup Code for ZPieGuy's Troop Trainer     Would you like to proceed?                                                 Press Okay to continue, or Cancel to exit");
+var start = confirm("This is the setup Code for ZPieGuy's Troop Trainer         Would you like to proceed?                                                 Press Okay to continue, or Cancel to exit");
 if (start === true) {
 	Setup();
 }
