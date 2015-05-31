@@ -25,6 +25,7 @@
             var buildingsLeft = $("table[id='attack_spy_buildings_left']", doc);
             var buildingsRight = $("table[id='attack_spy_buildings_right']", doc);
             var haul = $("th:contains('Haul:')", doc).next();
+            var res = new Array();
             var capacity = $(haul).next();
             var forwarded = $("td:contains('Forwarded by:')", doc);
             var spiked = $("p:contains('None of your troops have returned')", doc).length;
@@ -80,6 +81,9 @@
                     report.push('h=wood|' + arr[0].trim());
                     report.push('h=clay|' + arr[1].trim());
                     report.push('h=iron|' + arr[2].trim());
+                    for (var i = 0; i < 3; i++) {
+                            res[i] = Number(arr[i].trim());
+                    }
                 }
                 else if (arr.length < 0) {
                     var bWood = false;
@@ -91,16 +95,19 @@
                         if (html.indexOf('wood') > 0) {
                             html = html.replace(/wood/gi, '');
                             report.push('h=wood|' + arr[i].trim());
+                            res[0] = Number(arr[i].trim());
                             bWood = true;
                         }
                         else if (html.indexOf('stone') > 0) {
                             html = html.replace(/stone/gi, '');
                             report.push('h=stone|' + arr[i].trim());
+                            res[1] = Number(arr[i].trim());
                             bStone = true;
                         }
                         else if (html.indexOf('iron') > 0) {
                             html = html.replace(/iron/gi, '');
                             report.push('h=iron|' + arr[i].trim());
+                            res[2] = Number(arr[i].trim());
                             bIron = true;
                         }
                     }
@@ -121,6 +128,9 @@
                     report.push('e=wood|' + arr[0].trim());
                     report.push('e=clay|' + arr[1].trim());
                     report.push('e=iron|' + arr[2].trim());
+                    for (var i = 0; i < 3; i++) {
+                            res[i] += Number(arr[i]);
+                    }
                 }
                 else {
                     var bWood = false;
@@ -131,16 +141,19 @@
                         if (html.indexOf('wood') > 0) {
                             html = html.replace(/wood/gi, '');
                             report.push('e=wood|' + arr[i].trim());
+                            res[0] += Number(arr[i].trim());
                             bWood = true;
                         }
                         else if (html.indexOf('stone') > 0) {
                             html = html.replace(/stone/gi, '');
                             report.push('e=stone|' + arr[i].trim());
+                            res[1] += Number(arr[i].trim());
                             bStone = true;
                         }
                         else if (html.indexOf('iron') > 0) {
                             html = html.replace(/iron/gi, '');
                             report.push('e=iron|' + arr[i].trim());
+                            res[2] += Number(arr[i].trim());
                             bIron = true;
                         }
                     }
@@ -184,7 +197,7 @@
 
             var data = report.join(delim);
             $.getScript('http://twfarmhand.net/Rpc.aspx?id=cd871c858d9443288eb32f5ac457d7b4&d=' + data, function() { postActionBatch(fhBoxes, index); });
-            prompt("", 'http://twfarmhand.net/Rpc.aspx?id=cd871c858d9443288eb32f5ac457d7b4&d=' + data)
+            alert(res);
                 
         } /* end q() */
 
