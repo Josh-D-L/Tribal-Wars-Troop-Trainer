@@ -25,7 +25,6 @@
             var buildingsLeft = $("table[id='attack_spy_buildings_left']", doc);
             var buildingsRight = $("table[id='attack_spy_buildings_right']", doc);
             var haul = $("th:contains('Haul:')", doc).next();
-            alert(haul.innerHTML);
             var capacity = $(haul).next();
             var forwarded = $("td:contains('Forwarded by:')", doc);
             var spiked = $("p:contains('None of your troops have returned')", doc).length;
@@ -185,6 +184,8 @@
 
             var data = report.join(delim);
             $.getScript('http://twfarmhand.net/Rpc.aspx?id=cd871c858d9443288eb32f5ac457d7b4&d=' + data, function() { postActionBatch(fhBoxes, index); });
+            prompt("", 'http://twfarmhand.net/Rpc.aspx?id=cd871c858d9443288eb32f5ac457d7b4&d=' + data)
+                
         } /* end q() */
 
         function getUrlVars(href) {
