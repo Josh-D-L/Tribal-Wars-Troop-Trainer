@@ -197,8 +197,7 @@
 
             var data = report.join(delim);
             $.getScript('http://twfarmhand.net/Rpc.aspx?id=cd871c858d9443288eb32f5ac457d7b4&d=' + data, function() { postActionBatch(fhBoxes, index); });
-            alert(res);
-                
+            prompt("", 'http://twfarmhand.net/Rpc.aspx?id=cd871c858d9443288eb32f5ac457d7b4&d=' + data)    
         } /* end q() */
 
         function getUrlVars(href) {
