@@ -25,7 +25,7 @@
             var buildingsLeft = $("table[id='attack_spy_buildings_left']", doc);
             var buildingsRight = $("table[id='attack_spy_buildings_right']", doc);
             var haul = $("th:contains('Haul:')", doc).next();
-            var res = new Array();
+            var res = [0, 0, 0];
             var capacity = $(haul).next();
             var forwarded = $("td:contains('Forwarded by:')", doc);
             var spiked = $("p:contains('None of your troops have returned')", doc).length;
